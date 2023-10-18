@@ -1,9 +1,8 @@
-const express = require("express");
+import express from "express";
 const app = express();
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
 const cors = require("cors");
-const adminRoutes = require("./routes/admins");
-const userRoutes=require("./routes/users");
+import adminRoutes from "./routes/admins";
 require('dotenv').config(); 
 
 const url=process.env.mongourl
@@ -12,17 +11,13 @@ app.use(express.json());
 app.use(cors());
 
 app.use("/admin", adminRoutes);
-app.use("/",userRoutes);
 
 app.get("/", (req, res) => {
   res.send("ok");
 });
 
 // Connect to MongoDB
-mongoose.connect(url, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-})
+mongoose.connect(url)
   .then(() => {
     console.log("Connected to MongoDB");
   })

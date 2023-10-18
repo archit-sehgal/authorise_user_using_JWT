@@ -1,8 +1,8 @@
-const express = require("express");
-const jwt = require("jsonwebtoken");
-const { authenticateJwt, secretKey } = require("../middleware/mw")
-const mongoose = require("mongoose");
-const { User, Admin, Product } = require("../db/db");
+import express from "express";
+import jwt from "jsonwebtoken";
+import { authenticateJwt, secretKey } from "../middleware/mw";
+import mongoose from "mongoose";
+import { User, Admin, Product } from "../db/db";
 const router = express.Router();
 
 router.post("/signup", async (req, res) => {
@@ -33,4 +33,4 @@ router.post("/login",authenticateJwt,async(req,res)=>{
 })
 
 
-module.exports = router;
+export default router;
