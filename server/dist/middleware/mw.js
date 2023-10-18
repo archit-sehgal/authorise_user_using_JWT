@@ -12,7 +12,7 @@ const authenticateJwt = (req, res, next) => {
                 return res.status(401).json({ message: "Unauthorized" });
             }
             else {
-                req.user = user;
+                req.headers["user"] = user;
                 next();
             }
         });
